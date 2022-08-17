@@ -1,13 +1,13 @@
-import re
-from parser import JsonDecode, JsonEncode
+from parser import Decode, Encode
 from message import Message
 
 
 m = Message("subscribe")
 m.setTopic("My topic")
+m.setData("Data")
 
-res = JsonEncode(m)
+res = Encode(m)
 
 print(res)
 
-print(JsonDecode(res))
+print(Decode(res))

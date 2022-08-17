@@ -1,3 +1,7 @@
+import pickle
+
+
+
 """
 Message class is for messages that 
 are send and receive between server and client.
@@ -27,4 +31,5 @@ class Message:
     @param data: message payload.
     """
     def setData(self, data):
-        self.data = data
+        bytes = pickle.dumps(data)
+        self.data = bytes

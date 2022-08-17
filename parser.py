@@ -1,34 +1,28 @@
-import json
+import pickle
 
 from message import Message
 
 
 
 """
-JsonEncode.
+Encode.
 
 converts an object to json.
 
 @param object: interface
 @return str: json object
 """
-def JsonEncode(object) -> str:
-    return json.dumps(object.__dict__)
+def Encode(object) -> str:
+    return pickle.dumps(object)
 
 
 """
-JsonDecode.
+Decode.
 
 converts a json object to Message type.
 
 @param object: json string
 @return Message: converted message
 """
-def JsonDecode(object) -> Message:
-    object = json.loads(object)
-
-    m = Message(object['type'])
-    m.setTopic(object['topic'])
-    m.setData(object['data'])
-
-    return m
+def Decode(object) -> Message:
+    return pickle.loads(object)
