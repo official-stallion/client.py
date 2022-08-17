@@ -17,5 +17,5 @@ class Network:
     def read():
         pass
 
-    def write():
+    def write(self, data):
         pass
