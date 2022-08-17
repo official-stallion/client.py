@@ -1,4 +1,3 @@
-import imp
 import json
 
 from message import Message
@@ -16,15 +15,20 @@ converts an object to json.
 def JsonEncode(object) -> str:
     return json.dumps(object.__dict__)
 
+
 """
 JsonDecode.
 
 converts a json object to Message type.
 
-@param object: json dictionary
+@param object: json string
 @return Message: converted message
 """
-def JsonDecode(ocject) -> Message:
+def JsonDecode(object) -> Message:
+    object = json.loads(object)
+
     m = Message(object['type'])
     m.setTopic(object['topic'])
     m.setData(object['data'])
+
+    return m
