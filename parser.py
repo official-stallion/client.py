@@ -1,26 +1,52 @@
+import base64
 import json
+import pickle
 
 
 
 """
-Encode.
+JsonEncode.
 
 converts an object to json.
 
 @param object: interface
 @return str: json object
 """
-def Encode(object) -> str:
+def JsonEncode(object) -> str:
     return json.dumps(object.__dict__)
 
 
 """
-Decode.
+JsonDecode.
 
 converts a json object to Message type.
 
 @param object: json string
 @return Message: converted message
 """
-def Decode(object) -> dict:
-    return json.loads(object)
+def JsonDecode(string) -> dict:
+    return json.loads(string)
+
+
+"""
+PickleEncode.
+
+converts an object to string of bytes.
+
+@param object: any interface
+@return str: string of bytes
+"""
+def PickleEncode(object) -> str:
+    return base64.b64encode(pickle.dumps(object)).decode('ascii')
+
+
+"""
+PickleDecode.
+
+converts bytes to any object.
+
+@param bytes: string of bytes
+@return interface
+"""
+def PickleDecode(bytes):
+    return pickle.loads(base64.b64decode(bytes))

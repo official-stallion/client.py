@@ -1,5 +1,4 @@
-import base64
-import pickle
+from parser import PickleEncode
 
 
 
@@ -32,8 +31,4 @@ class Message:
     @param data: message payload.
     """
     def setData(self, data):
-        bytes = pickle.dumps(data)
-
-        encoded = base64.b64encode(bytes)
-
-        self.data = encoded.decode('ascii')
+        self.data = PickleEncode(data)

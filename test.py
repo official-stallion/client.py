@@ -1,6 +1,4 @@
-import base64
-import pickle
-from parser import Decode, Encode
+from parser import JsonDecode, JsonEncode, PickleDecode
 from message import Message
 
 
@@ -8,11 +6,11 @@ m = Message("subscribe")
 m.setTopic("My topic")
 m.setData("Data")
 
-res = Encode(m)
+res = JsonEncode(m)
 
 print(res)
 
-dec = Decode(res)
+dec = JsonDecode(res)
 
-obj = pickle.loads(base64.b64decode(dec['data']))
+obj = PickleDecode(dec['data'])
 print(obj)
