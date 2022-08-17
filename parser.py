@@ -1,6 +1,4 @@
-import pickle
-
-from message import Message
+import json
 
 
 
@@ -13,7 +11,7 @@ converts an object to json.
 @return str: json object
 """
 def Encode(object) -> str:
-    return pickle.dumps(object)
+    return json.dumps(object.__dict__)
 
 
 """
@@ -24,5 +22,5 @@ converts a json object to Message type.
 @param object: json string
 @return Message: converted message
 """
-def Decode(object) -> Message:
-    return pickle.loads(object)
+def Decode(object) -> dict:
+    return json.loads(object)

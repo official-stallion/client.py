@@ -1,3 +1,5 @@
+import base64
+import pickle
 from parser import Decode, Encode
 from message import Message
 
@@ -10,4 +12,7 @@ res = Encode(m)
 
 print(res)
 
-print(Decode(res))
+dec = Decode(res)
+
+obj = pickle.loads(base64.b64decode(dec['data']))
+print(obj)

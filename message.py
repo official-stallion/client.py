@@ -1,3 +1,4 @@
+import base64
 import pickle
 
 
@@ -12,10 +13,10 @@ class Message:
 
     @param type: message type which can be (subscribe, unsubscribe or normal)
     """
-    def __init__(self, type):
+    def __init__(self, type="normal", topic="", data=""):
         self.type = type
-        self.topic = ""
-        self.data = ""
+        self.topic = topic
+        self.data = data
 
     """
     setTopic.
@@ -32,4 +33,7 @@ class Message:
     """
     def setData(self, data):
         bytes = pickle.dumps(data)
-        self.data = bytes
+
+        encoded = base64.b64encode(bytes)
+
+        self.data = encoded.decode('ascii')
