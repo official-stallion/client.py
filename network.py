@@ -18,8 +18,7 @@ class Network:
     read method.
     """
     def read(self):
-        data = self.__connection.recv(1024)
-        print(data)
+        return self.__connection.recv(1024)
 
     """
     write method.
