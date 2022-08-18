@@ -12,7 +12,11 @@ class Network:
     @param port: server port
     """
     def __init__(self, host, port):
-        self.__connection = socket.socket(socket.AF_INET, socket.SOCK_STREAM).connect((host, port))
+        try:
+            self.__connection = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            self.__connection.connect((host, port))
+        except:
+            print("connection failed")
 
     """
     read method.
