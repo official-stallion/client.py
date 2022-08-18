@@ -1,4 +1,4 @@
-from parser import PickleEncode
+from parser import pickleEncode
 
 
 
@@ -14,8 +14,8 @@ class Message:
     """
     def __init__(self, type="normal", topic="", data=""):
         self.type = type
-        self.topic = topic
-        self.data = data
+        self.setTopic(topic=topic)
+        self.setData(data=data)
 
     """
     setTopic.
@@ -31,4 +31,13 @@ class Message:
     @param data: message payload.
     """
     def setData(self, data):
-        self.data = PickleEncode(data)
+        self.data = pickleEncode(data)
+
+
+"""
+newMessage.
+
+creates a new message object.
+"""
+def newMessage(type="normal", topic="", data="") -> Message:
+    return Message(type=type, topic=topic, data=data)

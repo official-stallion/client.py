@@ -1,18 +1,30 @@
-import imp
 from parser import *
 from network import Network
+from message import newMessage
 
 
 
 class Client:
     def __init__(self):
-        self.net = Network("127.0.0.1", "7025")
+        self.__net = Network("127.0.0.1", "7025")
+        self.__handlers = {}
+        self.__readDataFromServer()
+
+    def __readDataFromServer(self):
+        pass
     
     def Publish(self, topic, data):
-        pass
+        bytes = pickleEncode(jsonEncode(newMessage(topic=topic, data=data)))
+        self.__net.write(bytes)
 
     def Subscribe(self, topic, handler):
-        pass
+        self.__handlers[topic] = handler
+
+        bytes = pickleEncode(jsonEncode(newMessage(type="subscribe", topic=topic)))
+        self.__net.write(bytes)
 
     def Unsubscribe(self, topic):
-        pass
+        self.__handlers.pop(topic)
+
+        bytes = pickleEncode(jsonEncode(newMessage(type="unsubscribe", topic=topic)))
+        self.__net.write(bytes)
