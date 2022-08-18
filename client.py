@@ -1,3 +1,6 @@
+import logging
+import threading
+
 from parser import *
 from network import Network
 from message import newMessage
@@ -7,15 +10,18 @@ from message import newMessage
 class Client:
     def __init__(self, url):
         url = self.__parse_url__(url=url)
-        self.__net = Network(url[0], url[1])
+        logging.info(f'url: {url[0]}:{url[1]}')
+
+        self.__net = Network(url[0], int(url[1]))
         self.__handlers = {}
-        
-        self.__readDataFromServer()
+
+        threading.Thread(target=self.__readDataFromServer__(), args=(self,)).start()
     
     def __parse_url__(self, url):
         return url.rsplit(':', 1)
 
     def __readDataFromServer__(self):
+        logging.info("start reading from server ...")
         while True:
             message = self.__net.read()
             message = jsonDecode(pickleDecode(message))
