@@ -46,7 +46,7 @@ class Client:
         print("start reading from server ...")
         while True:
             message = self.__net.read()
-            message = jsonDecode(pickleDecode(message))
+            message = jsonDecode(message.encode('utf-8'))
             if message['type'] == 'normal':
                 data = pickleDecode(message['data'])
                 self.__handlers['topic'](data)
@@ -55,8 +55,8 @@ class Client:
     Publish data over a topic.
     """
     def Publish(self, topic, data):
-        bytes = bytesEncode(jsonEncode(newMessage(topic=topic, data=data)))
-        self.__net.write(bytes)
+        b = bytes(jsonEncode(newMessage(topic=topic, data=data)), 'utf-8')
+        self.__net.write(b)
 
     """
     Subscribe over a topic.
@@ -64,8 +64,8 @@ class Client:
     def Subscribe(self, topic, handler):
         self.__handlers[topic] = handler
 
-        bytes = bytesEncode(jsonEncode(newMessage(type="subscribe", topic=topic)))
-        self.__net.write(bytes)
+        b = bytes(jsonEncode(newMessage(type=1, topic=topic)), 'utf-8')
+        self.__net.write(b)
 
     """
     Unsubscribe from a topic.
@@ -73,5 +73,5 @@ class Client:
     def Unsubscribe(self, topic):
         self.__handlers.pop(topic)
 
-        bytes = bytesEncode(jsonEncode(newMessage(type="unsubscribe", topic=topic)))
-        self.__net.write(bytes)
+        b = bytes(jsonEncode(newMessage(type=2, topic=topic)), 'utf-8')
+        self.__net.write(b)

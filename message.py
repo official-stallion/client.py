@@ -12,7 +12,7 @@ class Message:
 
     @param type: message type which can be (subscribe, unsubscribe or normal)
     """
-    def __init__(self, type="normal", topic="", data=""):
+    def __init__(self, type=1, topic="", data=""):
         self.type = type
         self.setTopic(topic=topic)
         self.setData(data=data)
@@ -39,5 +39,5 @@ newMessage.
 
 creates a new message object.
 """
-def newMessage(type="normal", topic="", data="") -> Message:
+def newMessage(type=1, topic="", data="") -> Message:
     return Message(type=type, topic=topic, data=data)

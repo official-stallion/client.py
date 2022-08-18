@@ -37,7 +37,7 @@ converts an object to string of bytes.
 @return str: string of bytes
 """
 def pickleEncode(object) -> str:
-    return base64.b64encode(bytesEncode(object=object)).decode('ascii')
+    return base64.b64encode(pickle.dumps(object)).decode('ascii')
 
 
 """
@@ -49,22 +49,4 @@ converts bytes to any object.
 @return interface
 """
 def pickleDecode(bytes):
-    return bytesDecode(bytes=base64.b64decode(bytes))
-
-
-"""
-bytesEncode.
-
-convert object to array of bytes.
-"""
-def bytesEncode(object):
-    return base64.b64encode(pickle.dumps(object))
-
-
-"""
-bytesDecode.
-
-convert array of bytes to an object.
-"""
-def bytesDecode(bytes):
-    return pickle.loads(bytes)
+    return pickle.loads(bytes=base64.b64decode(bytes))
