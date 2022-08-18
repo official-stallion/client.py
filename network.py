@@ -1,6 +1,7 @@
 import socket 
 
 
+
 """
 Network manages the client requests over TCP connection.
 """
@@ -11,11 +12,17 @@ class Network:
     @param port: server port
     """
     def __init__(self, host, port):
-        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        self.connection = s.connect((host, port))
+        self.__connection = socket.socket(socket.AF_INET, socket.SOCK_STREAM).connect((host, port))
 
-    def read():
-        pass
+    """
+    read method.
+    """
+    def read(self):
+        data = self.__connection.recv(1024)
+        print(data)
 
+    """
+    write method.
+    """
     def write(self, data):
-        pass
+        self.__connection.sendall(data)
