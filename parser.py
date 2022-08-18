@@ -52,10 +52,19 @@ def pickleDecode(bytes):
     return bytesDecode(bytes=base64.b64decode(bytes))
 
 
+"""
+bytesEncode.
 
+convert object to array of bytes.
+"""
 def bytesEncode(object):
     return base64.b64encode(pickle.dumps(object))
 
 
+"""
+bytesDecode.
+
+convert array of bytes to an object.
+"""
 def bytesDecode(bytes):
     return pickle.loads(bytes)
