@@ -28,4 +28,4 @@ class Network:
     write method.
     """
     def write(self, data):
-        self.__connection.sendall(data)
+        self.__connection.send(data.encode())

@@ -9,6 +9,8 @@ def handler(data):
 
 if __name__ == "__main__":
     c = Client(url="localhost:9090")
+    sleep(1)
     c.Subscribe("book", handler)
-    c.Publish("book", "new book")
-    c.Publish("book", "new book")
+    sleep(1)
+    c.Publish("book", {'a': 'a', 'b': 'b'})
+    # c.Publish("book", "new book")

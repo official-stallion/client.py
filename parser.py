@@ -48,5 +48,5 @@ converts bytes to any object.
 @param bytes: string of bytes
 @return interface
 """
-def pickleDecode(bytes):
-    return pickle.loads(bytes=base64.b64decode(bytes))
+def pickleDecode(string):
+    return pickle.loads(base64.b64decode(string))
