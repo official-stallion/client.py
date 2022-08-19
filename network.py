@@ -22,7 +22,7 @@ class Network:
     read method.
     """
     def read(self):
-        return self.__connection.recv(1024)
+        return self.__connection.recv(2048)
 
     """
     write method.
