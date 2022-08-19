@@ -23,3 +23,6 @@ if __name__ == "__main__":
 
     # publish messages over a topic
     c.Publish("book", {'author': "Amirhossein", 'name': "Stallion"})
+
+    # unsubscribe
+    c.Unsubscribe("book")
