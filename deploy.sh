@@ -2,8 +2,6 @@
 
 echo "Rolling in ..."
 
-rm -rf dist
-
-python3 setup.py sdist
+python3 -m build
 
 twine upload dist/*
