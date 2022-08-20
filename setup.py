@@ -2,17 +2,13 @@ from setuptools import setup, find_packages
 
 
 setup(
-    name='example_publish_pypi_medium',
-    version='0.6',
+    name='stallion-python-sdk',
+    version='1.0',
     license='MIT',
-    author="Giorgos Myrianthous",
-    author_email='email@example.com',
+    author="amirhnajafiz",
+    author_email='najafizadeh21@gmail.com',
     packages=find_packages('src'),
     package_dir={'': 'src'},
-    url='https://github.com/gmyrianthous/example-publish-pypi',
-    keywords='example project',
-    install_requires=[
-          'scikit-learn',
-      ],
-
+    url='https://github.com/amirhnajafiz/stallion-python-sdk',
+    keywords='stallion sdk python',
 )
