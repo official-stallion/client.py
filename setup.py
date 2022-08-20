@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='stallion-python-sdk',
-    version='1.0',
+    version='1.1',
     license='MIT',
     author="amirhnajafiz",
     author_email='najafizadeh21@gmail.com',

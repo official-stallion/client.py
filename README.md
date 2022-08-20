@@ -3,6 +3,11 @@
 Client SDK for **Stallion** message broker.
 
 ## How to use?
+Pip install:
+```shell
+pip install stallion-python-sdk
+```
+
 ### Client
 Create a client:
 ```python
