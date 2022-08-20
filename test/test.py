@@ -1,5 +1,5 @@
 from time import sleep
-from client import Client
+from stallion_python_sdk import Client
 
 
 
