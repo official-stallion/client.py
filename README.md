@@ -21,25 +21,33 @@ pip install stallion-python-sdk
 ### Client
 Create a client:
 ```python
-from stallion_python_sdk import Client
+# importing Client module
+from stallion import Client
 
+# creating a client
+# with given stallion server url
 c = Client(url="localhost:9090")
 ```
 
 ### Publish
 ```python
+# publish an object on a topic
 c.Publish("book", {'author': "Amirhossein", 'name': "Stallion"})
 ```
 
 ### Subscribe
 ```python
+# creating a handler
+# any published object will be given to this handler as data
 def handler(data):
-    print(data)
+    print(f'{data['author']}: {data['name']})
 
+# subscribe over a topic with given handler
 c.Subscribe("book", handler)
 ```
 
 ### Unsubscribe
 ```python
+# unsubscribe from a topic
 c.Unsubscribe("book")
 ```

@@ -1,4 +1,5 @@
 import threading
+from time import sleep
 
 from parser import *
 from network import Network
@@ -57,12 +58,16 @@ class Client:
     def Publish(self, topic, data):
         self.__net.write(jsonEncode(newMessage(topic=topic, data=data)))
 
+        sleep(0.001)
+
     """
     Subscribe over a topic.
     """
     def Subscribe(self, topic, handler):
         self.__handlers[topic] = handler
         self.__net.write(jsonEncode(newMessage(type=2, topic=topic)))
+        
+        sleep(0.001)
 
     """
     Unsubscribe from a topic.
@@ -70,3 +75,5 @@ class Client:
     def Unsubscribe(self, topic):
         self.__handlers.pop(topic)
         self.__net.write(jsonEncode(newMessage(type=3, topic=topic)))
+
+        sleep(0.001)
