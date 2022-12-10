@@ -11,7 +11,7 @@ def handler(data):
 
 if __name__ == "__main__":
     # create client
-    c = Client(url="st://localhost:9090")
+    c = Client(url="st://root:Pa$$word@localhost:9090")
 
     # subscribe over a topic
     c.Subscribe("book", handler)
