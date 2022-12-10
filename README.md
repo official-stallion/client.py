@@ -26,7 +26,7 @@ from stallion import Client
 
 # creating a client
 # with given stallion server url
-c = Client(url="localhost:9090")
+c = Client(url="st://localhost:9090")
 ```
 
 ### Publish
