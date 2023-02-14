@@ -8,4 +8,3 @@ Check Stallion message broker: https://github.com/amirhnajafiz/stallion
 @email najafizadeh21@gmail.com
 @year 2022
 """
-from client import Client

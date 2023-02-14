@@ -1,4 +1,4 @@
-from parser import pickleEncode
+from stringparser import pickleEncode
 
 
 

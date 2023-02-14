@@ -1,7 +1,7 @@
 import threading
 from time import sleep
 
-from parser import *
+from stringparser import *
 from network import Network
 from message import newMessage
 
