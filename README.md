@@ -23,7 +23,7 @@ pip install stallion-python-sdk
 Create a client:
 ```python
 # importing Client module
-from stallion import Client
+from stallion.client import Client
 
 # creating a client
 # with given stallion server url
