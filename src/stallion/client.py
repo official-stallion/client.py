@@ -1,9 +1,9 @@
 import threading
 from time import sleep
 
-from stringparser import *
-from network import Network
-from message import newMessage
+from stallion.stringparser import *
+from stallion.network import Network
+from stallion.message import newMessage
 
 
 

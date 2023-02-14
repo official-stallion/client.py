@@ -1,4 +1,4 @@
-from stringparser import pickleEncode
+from stallion.stringparser import pickleEncode
 
 
 
